@@ -77,9 +77,9 @@ def dfs(node, red, current_depth, max_depth):
 # ----------------------- try a quick setup to test it ----------------------- #
 
 n = 4
-my_cards = [1, 2, 3, 4, 5]
-opponent_cards = [1, 2, 3, 4, 5]
-middle_cards = [1, 3, 2, 8, 9]
+my_cards = [1, 2, 3, 4]
+opponent_cards = [1, 2, 3, 4]
+middle_cards = [1, 3, 2, 8]
 current_middle = middle_cards.pop()
 max_depth = 4
 
