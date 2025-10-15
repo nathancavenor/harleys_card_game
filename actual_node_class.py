@@ -9,6 +9,7 @@ class Node:
         self.current_middle = current_middle
     
     def evaluate(self):
+        #print(self.my_cards, self.opponent_cards, self.deck, self.current_middle)
         w1 = 1
         w2 = 1
         return w1*(sum(self.my_cards)-sum(self.opponent_cards)) - w2*(self.my_points - self.opponent_points)
