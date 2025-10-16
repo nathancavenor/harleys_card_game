@@ -2,7 +2,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 13
+n = 3
 repetitions = 10000
 
 my_points_total = []
@@ -14,9 +14,9 @@ flag = False
 carry = 0
 
 for i in range(repetitions):
-    my_cards = list(range(1, n+1))
-    opponent_cards = list(range(1, n+1))
-    deck = list(range(1, n+1))
+    my_cards = [1, 2, 3, 4]
+    opponent_cards = [1, 2, 3, 4]
+    deck = [1, 3, 2, 8]
 
     random.shuffle(my_cards)
     random.shuffle(opponent_cards)

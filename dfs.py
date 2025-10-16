@@ -70,16 +70,15 @@ def dfs(node, red, current_depth, max_depth):
             value = dfs(child, red = True, current_depth = current_depth + 1, max_depth = max_depth)
             eval_values.append(value)
         return np.mean(eval_values)
-        
 
 
-
+'''
 # ----------------------- try a quick setup to test it ----------------------- #
 
 n = 4
-my_cards = [1, 2, 3, 4, 5]
-opponent_cards = [1, 2, 3, 4, 5]
-middle_cards = [1, 3, 2, 8, 9]
+my_cards = [1, 2, 3, 4]
+opponent_cards = [1, 2, 3, 4]
+middle_cards = [1, 3, 2, 8]
 current_middle = middle_cards.pop()
 max_depth = 4
 
@@ -104,3 +103,4 @@ for i in my_cards:
         
         total_eval += dfs(root, red=True, current_depth = 0, max_depth = min(max_depth, len(my_cards), len(opponent_cards), len(middle_cards)))
     print(f'{i} has an evaluation of {total_eval}')
+'''
