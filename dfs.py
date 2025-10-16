@@ -103,3 +103,4 @@ for i in my_cards:
         
         total_eval += dfs(root, red=True, current_depth = 0, max_depth = min(max_depth, len(my_cards), len(opponent_cards), len(middle_cards)))
     print(f'{i} has an evaluation of {total_eval}')
+'''
