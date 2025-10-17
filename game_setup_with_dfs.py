@@ -1,4 +1,5 @@
 from dfs import dfs
+from dfs_with_random import dfs_with_random
 from actual_node_class import Node
 import random
 
@@ -18,8 +19,8 @@ def my_choice_function(root):
                 carry = 0,
                 current_middle = current_middle
             )
-            total_eval += dfs(new_root, red=True, current_depth=0, 
-                              max_depth=min(max_depth, len(my_cards), len(opponent_cards), len(middle_cards)))
+            total_eval += dfs_with_random(new_root, red=True, current_depth=0, 
+                              max_depth=min(max_depth, len(my_cards), len(opponent_cards), len(middle_cards)), no_samples = 3)
         evals[i] = total_eval
     return max(evals, key=evals.get)
 
@@ -51,14 +52,14 @@ if __name__ == "__main__":
     for j in range(no_total_games):
         # Setup Data
         n = 4
-        my_cards = [1, 2, 3, 4]
-        opponent_cards = [1, 2, 3, 4]
-        middle_cards = [1, 3, 2, 8]
+        my_cards = [1, 2, 3, 4, 5, 6, 7]
+        opponent_cards = [1, 2, 3, 4, 5, 6, 7]
+        middle_cards = [1, 3, 2, 8, 11, 12, 6]
 
         current_middle = middle_cards.pop()
         my_points = 0
         opponent_points = 0
-        max_depth = 4
+        max_depth = 2
 
         root = Node(
             my_cards = my_cards,
