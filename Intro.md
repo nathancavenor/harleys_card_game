@@ -53,3 +53,20 @@ $f(N) = \frac{k}{i}(w_1(\alpha - \beta) + w_2(x-y))$
 
 
 $k$ is some normalising factor - not actually needed to compare positions within a game, but might be useful if I would like to compare positions from between games. My reasoning for dividing by $i$ is I would like when there are still lots of cards left, the positions are more neutral (closer to 0) while when there aren't many more cards left the positions should be more weighted towards one way or another. I may increase $i$ (change it to $i^2$ or some other power in the future) to accentuate this. $w_1$ and $w_2$ are nice that incraesing $w_2$ makes an algorithm more "agressive" (wants to win quickly) while increasing $w_1$ means it doesn't mind losing a few provided it has the power to win later. These parameters and this evaluation can be tuned later once the framework is set up.
+
+
+# Post-Implementation Thoughts
+
+The bot works successfully, and wins around 70-80% of games against a random opponent (in a simple, small game). It is important to remember that it's based of expected value, so it can't be asked to win 100% of games (although the game is inherently random, so no bot should win 100% of games unless you have a dominating hand). 
+
+It performs slightly worse than my initial bot with rudimentary strategy playing against a random opponent, which surprised me. However it makes some sense given that (again) it's going off expected value. I suspect that against not a random opponent but a player with some actual strategy, the rudimentary strategic bot's win rate would decline faster than the tree search bot.
+
+## Performance
+
+The performance speed is quite poor, even for small, simpla games. The rudimentary strategy bot's time efficiency is far quicker. Even after implementing it to be a Monte Carlo Tree Search (choosing only a random selection of states assuming the opponent's next moves are equally likely), I only put it up to a 7 card game with a depth of 3 taking 4 samples per round. It's stll a lot of operations, but it took over 10 seconds to play a single game. I hate to think that for the traditional game it would take far longer.
+
+## Areas for Potential Improvement
+
+I believe that a significant portion of the time taken comes down overhead, which is at least a nice learning experience for me. A problem for me is that I kept creating copies of lists and then looping through them, which is costing me a lot of time and space. In the future I could refactor my code to include backtracking so that I'm only working with one master list and I'm just continually updating it based on where I'm at, although I'm not sure how well that would work in this tree search (although I think it's possible to make it work). Passing information through to be updated rather than recalculated would be great too.
+
+Not performance related - it could be interesting to experiment with assuming that the opponent's choices are not equally weighted i.e. they tend to play cards closer to the actual value itself. Could also be interesting to play the tree search opponent against the rudimentary strategy bot opponent and see who wins.
